@@ -16,19 +16,19 @@ class _AddEditUserScreenState extends State<AddEditUserScreen> {
 
   late TextEditingController _nameController;
   late TextEditingController _emailController;
+  late TextEditingController _contactController;
   String _role = 'Admin';
-  String _status = 'Active';
+
 
   final List<String> roles = ['Admin', 'Doctor', 'Nurse'];
-  final List<String> statuses = ['Active', 'Inactive'];
 
   @override
   void initState() {
     super.initState();
     _nameController = TextEditingController(text: widget.userData?['name'] ?? '');
     _emailController = TextEditingController(text: widget.userData?['email'] ?? '');
+    _contactController = TextEditingController(text: widget.userData?['contact'] ?? '');
     _role = widget.userData?['role'] ?? 'Admin';
-    _status = widget.userData?['status'] ?? 'Active';
   }
 
   void _saveUser() {
@@ -37,7 +37,7 @@ class _AddEditUserScreenState extends State<AddEditUserScreen> {
         'name': _nameController.text,
         'email': _emailController.text,
         'role': _role,
-        'status': _status,
+        'contact': _contactController.text,
       };
 
       Navigator.pop(context, newUser); // Pass back to parent
@@ -101,19 +101,12 @@ class _AddEditUserScreenState extends State<AddEditUserScreen> {
                   setState(() => _role = value!);
                 },
               ),
-              const SizedBox(height: 16),
-              DropdownButtonFormField<String>(
-                value: _status,
-                decoration: _inputDecoration("Status"),
-                items: statuses.map((status) {
-                  return DropdownMenuItem<String>(
-                    value: status,
-                    child: Text(status),
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() => _status = value!);
-                },
+                            const SizedBox(height: 16),
+              TextFormField(
+                controller: _contactController,
+                decoration: _inputDecoration("Contact"),
+                validator: (value) =>
+                    value!.isEmpty ? "Please enter contact number" : null,
               ),
               const SizedBox(height: 24),
 ElevatedButton(

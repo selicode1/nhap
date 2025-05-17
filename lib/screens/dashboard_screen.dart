@@ -88,15 +88,19 @@ class DashboardScreen extends StatelessWidget {
                                 icon: Icons.person,
                                 iconColor: AppColors.accent,
                                 backgroundColor: AppColors.accent.withOpacity(0.1),
-                                onTap: () {},
+                                onTap: () {
+                                                                                                              Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (_) => MainScreen(pageIndex: 2)));
+                                },
                               ),
                             ),
                             const SizedBox(width: 12),
                             Expanded(
                               child: StatCard(
-                                title: 'Patients',
+                                title: 'Medical Records',
                                 value: '2,541',
-                                icon: Icons.people,
+                                icon: Icons.folder,
                                 iconColor: AppColors.error,
                                 backgroundColor: AppColors.error.withOpacity(0.1),
                                 onTap: () {},
@@ -129,7 +133,7 @@ class DashboardScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (_) => UserManagementScreen()));
                 }),
-                _buildActionButton(context, "View Records", Icons.folder_open_outlined, Colors.blue.shade600, () {
+                _buildActionButton(context, "View Records", Icons.folder_shared_outlined, Colors.blue.shade600, () {
                                           Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (_) => PatientRecordsScreen()));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nhap/screens/login_screen.dart';
+import 'package:nhap/screens/main_screen.dart';
 
 
 void main() {
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: LoginScreen(), // Start with the first screen
+    // home: MainScreen(pageIndex: 0), // Start with the first screen
+    home: LoginScreen(),
     );
   }
 }

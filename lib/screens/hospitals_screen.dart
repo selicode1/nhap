@@ -80,20 +80,15 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
             // Search field
             TextField(
               decoration: InputDecoration(
-                labelText: 'Search Hospitals',
+                hintText: 'Search Hospitals',
                 prefixIcon: const Icon(Icons.search),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppColors.primary, width: 1),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppColors.primary, width: 2),
-        ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: AppColors.primary),
+                ),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.primary),
+                ),
               ),
               onChanged: (value) => setState(() => searchQuery = value),
             ),
@@ -106,13 +101,15 @@ Row(
     const SizedBox(width: 12),
     Container(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.neutral500), // Use your primary color here
-        borderRadius: BorderRadius.circular(8),
-      ),
       child: DropdownButton<String>(
         value: selectedType,
-        underline: SizedBox(), // Remove the default underline
+                          borderRadius: BorderRadius.circular(8),
+                  dropdownColor: Colors.white,
+                  style: const TextStyle(color: AppColors.primary),
+                  underline: Container(
+                    height: 2,
+                    color: AppColors.primary,
+                  ), // Remove the default underline
         items: hospitalTypes
             .map((type) => DropdownMenuItem(
                   value: type,

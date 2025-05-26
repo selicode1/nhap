@@ -7,7 +7,7 @@ import 'package:nhap/screens/hospitals_screen.dart';
 import 'package:nhap/screens/view_records_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  final int pageIndex; // ✅ define this property
+  final int pageIndex; 
 
   const MainScreen({super.key, required this.pageIndex});
 
@@ -28,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _currentIndex = widget.pageIndex; // ✅ initialize from widget
+    _currentIndex = widget.pageIndex;
   }
 
   @override
@@ -51,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
         ],
         onTap: (index) {
           setState(() {
-            _currentIndex = index; // ✅ update state properly
+            _currentIndex = index;
           });
         },
       ),
